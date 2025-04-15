@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Women's Safety App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Women's Safety App</h1>
+  </header>
+  <main>
+    <section class="location-section">
+      <h2>Your Live Location</h2>
+      <button onclick="getLocation()">Share Live Location</button>
+      <p id="location-display">Location not shared yet.</p>
+    </section>
+
+    <section class="emergency-contacts">
+      <h2>Emergency Contacts</h2>
+      <form id="contact-form">
+        <input type="text" placeholder="Name" name="name" required />
+        <input type="tel" placeholder="Phone Number" name="phone" required />
+        <button type="submit">Add Contact</button>
+      </form>
+      <ul id="contact-list"></ul>
+    </section>
+  </main>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        document.getElementById("location-display").innerText = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      const lat = position.coords.latitude;
+      const long = position.coords.longitude;
+      document.getElementById("location-display").innerText = `Latitude: ${lat}, Longitude: ${long}`;
+
+      // Send to server (replace '/location' with your actual backend route)
+      fetch('/location', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ latitude: lat, longitude: long })
+      });
+    }
+
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = e.target.name.value;
+      const phone = e.target.phone.value;
+
+      fetch('/add-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone })
+      }).then(() => {
+        const li = document.createElement("li");
+        li.innerText = `${name}: ${phone}`;
+        document.getElementById("contact-list").appendChild(li);
+        e.target.reset();
+      });
+    });
+  </script>
+</body>
+</html>
+
