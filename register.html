@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - SecureShe</title>
+
+  <!-- Internal CSS -->
+  <style>
+    @font-face {
+      font-family: 'Nunito';
+      src: url('fonts/nunito.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Birthstone';
+      src: url('fonts/birthstone.woff2') format('woff2');
+    }
+
+    :root {
+      --primary-color: #1995AD;
+      --accent-color: #FFECD0;
+      --dark-color: #372329;
+      --white: #fff;
+
+      --font-main: 'Nunito', sans-serif;
+      --font-logo: 'Birthstone', cursive;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--primary-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--white);
+    }
+
+    .register-container {
+      background: var(--white);
+      color: var(--dark-color);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .logo {
+      font-family: var(--font-logo);
+      font-size: 48px;
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    input {
+      padding: 12px;
+      border: 1px solid var(--accent-color);
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .btn-register {
+      padding: 12px;
+      background: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-register:hover {
+      background: #157b91;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .login-link a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="register-container">
+    <div class="logo">secureshe</div>
+    <h2>Create Account</h2>
+    <form action="login.html">
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit" class="btn-register">Register</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="login.html">Login</a>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
