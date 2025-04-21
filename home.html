@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - SecureShe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #F0F4F8;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: #1995AD;
+      margin-bottom: 30px;
+    }
+
+    .nav-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .nav-button {
+      background-color: #ffffff;
+      border: 2px solid #1995AD;
+      border-radius: 10px;
+      padding: 30px 10px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1995AD;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-button:hover {
+      background-color: #1995AD;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Welcome to SecureShe</h1>
+    <p>Select a function to continue:</p>
+
+    <div class="nav-buttons">
+      <a href="live-navigation.html" class="nav-button">Live Navigation</a>
+      <a href="emergency-contacts.html" class="nav-button">Emergency Contacts</a>
+      <a href="report-incident.html" class="nav-button">Report Incident</a>
+      <a href="settings.html" class="nav-button">Settings</a>
+      <a href="help.html" class="nav-button">Help & Support</a>
+      <a href="logout.html" class="nav-button">Logout</a>
+    </div>
+  </div>
+
+</body>
+</html>
