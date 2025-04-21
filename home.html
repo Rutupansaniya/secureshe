@@ -61,12 +61,12 @@
     <p>Select a function to continue:</p>
 
     <div class="nav-buttons">
-      <a href="live-navigation.html" class="nav-button">Live Navigation</a>
-      <a href="emergency-contacts.html" class="nav-button">Emergency Contacts</a>
-      <a href="report-incident.html" class="nav-button">Report Incident</a>
-      <a href="settings.html" class="nav-button">Settings</a>
-      <a href="help.html" class="nav-button">Help & Support</a>
-      <a href="logout.html" class="nav-button">Logout</a>
+      <a href="{{url_for('live-navigation')}}" class="nav-button">Live Navigation</a>
+      <a href="{{url_for('emergency-contacts')}}" class="nav-button">Emergency Contacts</a>
+      <a href="{{url_for('report-incident)}}" class="nav-button">Report Incident</a>
+      <a href="{{url_for('settings)}}" class="nav-button">Settings</a>
+      <a href="{{url_for('help')}}" class="nav-button">Help & Support</a>
+      <a href="{{url_for('logout')}}" class="nav-button">Logout</a>
     </div>
   </div>
 
