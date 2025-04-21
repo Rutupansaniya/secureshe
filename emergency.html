@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Contacts - SecureShe</title>
+
+  <!-- Internal CSS -->
+  <style>
+    @font-face {
+      font-family: 'Nunito';
+      src: url('fonts/nunito.woff2') format('woff2');
+    }
+
+    :root {
+      --primary-color: #1995AD;
+      --accent-color: #FFECD0;
+      --dark-color: #372329;
+      --white: #fff;
+      --font-main: 'Nunito', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--dark-color);
+    }
+
+    .header {
+      width: 100%;
+      background-color: var(--primary-color);
+      padding: 20px 0;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .header h1 {
+      font-size: 36px;
+    }
+
+    .navigation {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .nav-btn {
+      padding: 12px 30px;
+      background-color: var(--accent-color);
+      border: none;
+      color: var(--dark-color);
+      font-weight: bold;
+      margin: 0 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: #d4b2a2;
+    }
+
+    .content {
+      width: 80%;
+      max-width: 1000px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .contacts-section {
+      background-color: var(--accent-color);
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .contacts-section ul {
+      list-style-type: none;
+    }
+
+    .contacts-section li {
+      padding: 10px;
+      font-size: 18px;
+      background-color: var(--white);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contacts-section button {
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .contacts-section button:hover {
+      background-color: #cc0000;
+    }
+
+    .edit-btn {
+      background-color: #ffc107;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .edit-btn:hover {
+      background-color: #e0a800;
+    }
+
+    .footer {
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+
+    .add-contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: var(--accent-color);
+      border-radius: 15px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .add-contact-form input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .add-contact-form button {
+      padding: 12px;
+      background-color: var(--primary-color);
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .add-contact-form button:hover {
+      background-color: #155f6f;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Emergency Contacts</h1>
+  </div>
+
+  <!-- Navigation Button -->
+  <div class="navigation">
+    <a href="home.html" class="nav-btn">Back to Home</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <p>These are your emergency contacts. You can add, update, or delete any contact.</p>
+
+    <!-- Add Contact Form -->
+    <div class="add-contact-form">
+      <input type="text" id="contactName" placeholder="Enter Name" />
+      <input type="tel" id="contactPhone" placeholder="Enter Phone Number" />
+      <button onclick="addContact()">Add Contact</button>
+    </div>
+
+    <!-- Contacts List -->
+    <div class="contacts-section">
+      <h3>Your Emergency Contacts</h3>
+      <ul id="contactsList">
+        <!-- Dynamically populated contacts will appear here -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Powered by SecureShe | Your safety, our priority</p>
+  </div>
+
+  <script>
+    // Retrieve contacts from localStorage if available
+    let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+
+    // Function to add a contact
+    function addContact() {
+      const name = document.getElementById("contactName").value;
+      const phone = document.getElementById("contactPhone").value;
+
+      if (!name || !phone) {
+        alert("Both name and phone number are required.");
+        return;
+      }
+
+      // Basic phone number validation
+      const phonePattern = /^[0-9]{10}$/;
+      if (!phone.match(phonePattern)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+      }
+
+      const contact = { name, phone };
+      contacts.push(contact);
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+      renderContacts();
+      clearForm();
+    }
+
+    // Function to render contacts list
+    function renderContacts() {
+      const contactsList = document.getElementById("contactsList");
+      contactsList.innerHTML = "";
+
+      contacts.forEach((contact, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${contact.name} - ${contact.phone}
+          <button class="edit-btn" onclick="editContact(${index})">Edit</button>
+          <button onclick="deleteContact(${index})">Delete</button>
+        `;
+        contactsList.appendChild(li);
+      });
+    }
+
+    // Function to delete a contact
+    function deleteContact(index) {
+      if (confirm("Are you sure you want to delete this contact?")) {
+        contacts.splice(index, 1); // Remove contact from array
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+        renderContacts();
+      }
+    }
+
+    // Function to edit a contact
+    function editContact(index) {
+      const newName = prompt("Enter new name:", contacts[index].name);
+      const newPhone = prompt("Enter new phone number:", contacts[index].phone);
+
+      if (!newName || !newPhone) {
+        alert("Both fields are required to update.");
+        return;
+      }
+
+      const phonePattern = /^[0-9]{10}$/;
+      if (!newPhone.match(phonePattern)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+      }
+
+      contacts[index] = { name: newName, phone: newPhone };
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+      renderContacts();
+    }
+
+    // Clear form inputs
+    function clearForm() {
+      document.getElementById("contactName").value = "";
+      document.getElementById("contactPhone").value = "";
+    }
+
+    // Initial render of contacts
+    renderContacts();
+  </script>
+</body>
+</html>
