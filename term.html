@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions</title>
+
+  <style>
+    @font-face {
+      font-family: 'Nunito';
+      src: url('fonts/nunito.woff2') format('woff2'),
+           url('fonts/nunito.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --font-family-nunito: 'Nunito', sans-serif;
+      --text-black: rgba(0, 0, 0, 1);
+      --text-light-bg: rgba(255, 236, 208, 1);
+      --primary-color: rgba(25, 149, 173, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family-nunito);
+      background-color: #fff;
+      color: var(--text-black);
+      padding: 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 1024px;
+      width: 100%;
+      background-color: var(--primary-color);
+      border-radius: 25px;
+      padding: 40px;
+    }
+
+    .inner-box {
+      background-color: var(--text-light-bg);
+      border-radius: 50px;
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .agree-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--primary-color);
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 24px;
+      color: var(--text-light-bg);
+      font-weight: bold;
+      width: 200px;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .agree-button:hover {
+      background-color: #1b8ea5;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 16px;
+      }
+
+      .container, .inner-box {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .agree-button {
+        font-size: 20px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="inner-box">
+      <h2>Terms &amp; Conditions</h2>
+      <p>
+        These Terms of Service ("Terms") govern your access to and use of this website/apps and widgets.
+        Please read these Terms carefully, and contact us if you have any questions.
+        By accessing or using this app, you agree to be bound by these Terms,
+        our Privacy Policy, our Cookies Policy and our Community Guidelines.
+      </p>
+      <button class="agree-button" onclick="window.location.href='homepage.html'">Agree</button>
+    </div>
+  </div>
+</body>
+</html>
