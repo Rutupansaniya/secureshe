@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety App - Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom,#1995AD, #1995AD);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .login-container {
+            background:rgba(255, 255, 255, 0.6);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo img {
+            max-width: 80px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color:#1995AD;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .login-button {
+            background:#1995AD;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .login-button:hover {
+            background: #1995AD;
+        }
+
+        .secondary-links {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .secondary-links a {
+            color: #1995AD;
+            text-decoration: none;
+        }
+
+        .secondary-links a:hover {
+            text-decoration: underline;
+        }
+
+        .google-login {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 0.8rem;
+            cursor: pointer;
+        }
+
+        .google-login img {
+            width: 20px;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="C:\\Users\\dhruv\\Pictures\\Saved Pictures\\secure.png" alt="Securshe Logo">
+        </div>
+        <h1>Securshe</h1>
+        <form>
+            <div class="input-group">
+                <label for="email">Email or Phone</label>
+                <input type="text" id="email" name="email" placeholder="Enter your email or phone">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="login-button">Log In</button>
+        </form>
+        <div class="secondary-links">
+            <a href="#">Forgot Password?</a> | <a href="#">Sign Up</a>
+        </div>        
+    </div>
+</body>
+</html>
