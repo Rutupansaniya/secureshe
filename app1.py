@@ -5,7 +5,6 @@ import os
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
-# --- Initialize DB if not exist ---
 def init_db():
     if not os.path.exists('users.db'):
         conn = sqlite3.connect('users.db')
@@ -21,7 +20,6 @@ def init_db():
         conn.commit()
         conn.close()
 
-# --- Registration Route ---
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -40,7 +38,6 @@ def register():
             return redirect(url_for('register'))
     return render_template('register.html')
 
-# --- Login Route ---
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -58,30 +55,26 @@ def login():
             flash("Invalid credentials", "danger")
     return render_template('login.html')
 
-# --- Terms and Conditions Page ---
 @app.route('/terms', methods=['GET', 'POST'])
 def terms():
     if 'user_id' not in session:
         return redirect(url_for('login'))
     if request.method == 'POST':
         return redirect(url_for('home'))
-    return render_template('terms.html')
+    return render_template('term.html')
 
-# --- Home Page ---
 @app.route('/home')
 def home():
     if 'user_id' not in session:
         return redirect(url_for('login'))
     return render_template('home.html', name=session.get('user_name'))
 
-# --- Logout ---
 @app.route('/logout')
 def logout():
     session.clear()
     flash("Logged out successfully.", "info")
     return redirect(url_for('login'))
 
-# --- Run app ---
 if __name__ == '__main__':
     init_db()
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0')
